@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import db.DB;
-import db.DbExcepion;
+import db.DbException;
 import model.dao.SellerDao;
 import model.entities.Department;
 import model.entities.Seller;
@@ -52,10 +52,10 @@ public class SellerDaoJDBC implements SellerDao{
 				}
 				DB.closeResultSet(rs);
 			} else {
-				throw new DbExcepion("Unexpected error! No rows affected!");
+				throw new DbException("Unexpected error! No rows affected!");
 			}
 		} catch (SQLException e) {
-			throw new DbExcepion(e.getMessage());
+			throw new DbException(e.getMessage());
 		} finally {
 			DB.closeStatement(st);
 		}
@@ -81,7 +81,7 @@ public class SellerDaoJDBC implements SellerDao{
 			st.executeUpdate();
 			
 		} catch (SQLException e) {
-			throw new DbExcepion(e.getMessage());
+			throw new DbException(e.getMessage());
 		} finally {
 			DB.closeStatement(st);
 		}
@@ -98,7 +98,7 @@ public class SellerDaoJDBC implements SellerDao{
 			
 			st.executeUpdate();
 		} catch (SQLException e) {
-			throw new DbExcepion(e.getMessage());
+			throw new DbException(e.getMessage());
 		} finally {
 			DB.closeConnection();
 		}
@@ -124,7 +124,7 @@ public class SellerDaoJDBC implements SellerDao{
 			}
 			return null;
 		} catch (SQLException e) {
-			throw new DbExcepion(e.getMessage());
+			throw new DbException(e.getMessage());
 		} finally {
 			DB.closeStatement(st);
 			DB.closeResultSet(rs);
@@ -182,7 +182,7 @@ public class SellerDaoJDBC implements SellerDao{
 			return list;
 			
 		} catch (SQLException e) {
-			throw new DbExcepion(e.getMessage());
+			throw new DbException(e.getMessage());
 		} finally {
 			DB.closeStatement(st);
 			DB.closeResultSet(rs);
@@ -224,7 +224,7 @@ public class SellerDaoJDBC implements SellerDao{
 			return list;
 			
 		} catch (SQLException e) {
-			throw new DbExcepion(e.getMessage());
+			throw new DbException(e.getMessage());
 		} finally {
 			DB.closeStatement(st);
 			DB.closeResultSet(rs);
